@@ -14,10 +14,9 @@ class Solution:
             return
         if root.left is None and root.right is None:
             self.sum += (root.val + temp*10)
-        else:
-            self.helper(root.left, temp * 10 + root.val)
-            
-            self.helper(root.right, temp * 10 + root.val)
+       
+        self.helper(root.left, temp * 10 + root.val) 
+        self.helper(root.right, temp * 10 + root.val)
         
         
     def sumNumbers(self, root: Optional[TreeNode]) -> int:
