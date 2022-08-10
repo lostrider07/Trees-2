@@ -3,7 +3,37 @@
 # Did this code successfully run on Leetcode : Yes
 # Any problem you faced while coding this : No
 
+# Iterative Approach
+class Solution:
+    
+    def __init__(self):
+        self.sum = 0
+        self.val = 0
+        self.stack = []
+        
+    def sumNumbers(self, root: Optional[TreeNode]) -> int:
+        while root or self.stack:
+            while root:
+                if root is None:
+                    return
+                
+                self.val = (self.val * 10) + root.val
+                self.stack.append([root, self.val])
+                root = root.left
+                
+            pop = self.stack.pop()
+            root = pop[0]    
+            if root.left is None and root.right is None:
+                self.sum += self.val
+            self.val = pop[1]
+            root = root.right
+        return self.sum
 
+
+
+
+
+# recursive method
 class Solution:
     
     def __init__(self):
